@@ -8,8 +8,18 @@ export async function POST(req) {
     const { name, email, password } = await req.json();
     const hashedPassword = await bcrypt.hash(password, 10);
     await connectMongoDB();
-    await User.create({ name, email, password: hashedPassword });
+    const newUser = new User({ name, email, password: hashedPassword, role: "super_admin" });
 
+    // Attempt to save the user and handle any errors
+    try {
+      await newUser.save();
+      console.log("User saved successfully:", newUser);
+    } catch (saveError) {
+      console.error("Error saving user:", saveError);
+      throw saveError; 
+    }
+
+debugger;
     return NextResponse.json({ message: "User registered." }, { status: 201 });
   } catch (error) {
     return NextResponse.json(

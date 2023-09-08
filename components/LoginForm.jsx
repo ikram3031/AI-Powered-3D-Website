@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { toast } from 'react-toastify';
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -15,6 +16,17 @@ export default function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    toast.info('Please wait...', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+
     try {
       const res = await signIn("credentials", {
         email,
@@ -23,9 +35,29 @@ export default function LoginForm() {
       });
 
       if (res.error) {
-        setError("Invalid Credentials");
+        toast.error('Invalid Credentials!!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
         return;
       }
+
+      toast.success('Successfully logged in.', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
 
       router.replace("dashboard");
     } catch (error) {
@@ -34,8 +66,8 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="grid place-items-center h-screen">
-      <div className="shadow-lg p-5 rounded-lg border-t-4 border-green-400">
+    <div className="grid place-items-center h-screen bg-primary">
+      <div className="shadow-lg bg-white p-5 rounded-lg border-t-4 border-gold">
         <h1 className="text-xl font-bold my-4">Login</h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">

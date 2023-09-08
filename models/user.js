@@ -14,6 +14,11 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    role: {
+      type: String,
+      enum: ["super_admin", "admin", "hotel_manager"],
+      default: "super_admin",
+    },
   },
   { timestamps: true }
 );

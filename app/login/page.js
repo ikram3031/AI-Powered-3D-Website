@@ -6,7 +6,7 @@ import { authOptions } from '../api/auth/[...nextauth]/route';
 const page = async () => {
   const session = await getServerSession(authOptions);
 
-  console.log( session )
+  console.log( 'session:', session )
 
   if (session) redirect("/");
 
@@ -16,5 +16,7 @@ const page = async () => {
     </>
   )
 }
+
+page.withLoginLayout = true;
 
 export default page

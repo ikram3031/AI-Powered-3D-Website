@@ -3,6 +3,7 @@ import User from "@/models/user";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 export const authOptions = {
   providers: [
@@ -16,6 +17,7 @@ export const authOptions = {
         try {
           await connectMongoDB();
           const user = await User.findOne({ email });
+          console.log('user',user)
 
           if (!user) {
             return null;
@@ -27,7 +29,16 @@ export const authOptions = {
             return null;
           }
 
-          return user;
+          // Generate a JWT token when authentication is successful
+          const token = jwt.sign(
+            { userId: user._id, email: user.email, role: user.role }, 
+            process.env.JWT_SECRET, 
+            { expiresIn: "1d" } 
+          );
+
+          console.log(token)
+
+          return { ...user, token }; 
         } catch (error) {
           console.log("Error: ", error);
         }
@@ -36,6 +47,19 @@ export const authOptions = {
   ],
   session: {
     strategy: "jwt",
+    jwt: true,
+  },
+  callbacks: {
+    async jwt(token, user) {
+      // Store the user data in the token
+      if (user) {
+        token.id = user.id;
+        token.email = user.email;
+        token.role = user.role;
+        token.name = user.name;
+      }
+      return token;
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {

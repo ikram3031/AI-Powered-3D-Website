@@ -1,8 +1,7 @@
-import { AuthProvider } from "./Providers";
-import './globals.css'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import { AuthProvider, ReduxProvider } from "./Providers";
+import './globals.scss'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 export const metadata = {
   title: 'Hotel Management',
@@ -12,8 +11,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <AuthProvider>{children}</AuthProvider>
+      <body>
+        <ReduxProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </ReduxProvider>
+        <ToastContainer/>
       </body>
     </html>
   )

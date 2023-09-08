@@ -9,4 +9,6 @@ const register = () => {
   )
 }
 
+register.withLoginLayout = false
+
 export default register
