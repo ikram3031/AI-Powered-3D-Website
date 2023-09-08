@@ -5,11 +5,11 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-toastify';
+import Button from "./Button";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
   const router = useRouter();
 
@@ -18,7 +18,7 @@ export default function LoginForm() {
 
     toast.info('Please wait...', {
       position: "top-right",
-      autoClose: 2000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -46,31 +46,41 @@ export default function LoginForm() {
           theme: "light",
           });
         return;
+      } else{
+        toast.success('Successfully logged in.', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       }
-
-      toast.success('Successfully logged in.', {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        });
 
       router.replace("dashboard");
     } catch (error) {
+      toast.error('Something went wrong!!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       console.log(error);
     }
   };
 
   return (
-    <div className="grid place-items-center h-screen bg-primary">
-      <div className="shadow-lg bg-white p-5 rounded-lg border-t-4 border-gold">
-        <h1 className="text-xl font-bold my-4">Login</h1>
+    <div className="grid place-items-center h-screen bg-primary bg-dark">
+      <div className="shadow-md shadow-gray-100 bg-gray-100 p-5 rounded-lg w-3/12 py-8">
+        <h1 className="pb-4 text-center">Login</h1>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <input
             onChange={(e) => setEmail(e.target.value)}
             type="text"
@@ -81,18 +91,7 @@ export default function LoginForm() {
             type="password"
             placeholder="Password"
           />
-          <button className="bg-green-600 text-white font-bold cursor-pointer px-6 py-2">
-            Login
-          </button>
-          {error && (
-            <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
-              {error}
-            </div>
-          )}
-
-          <Link className="text-sm mt-3 text-right" href={"/register"}>
-            Don't have an account? <span className="underline">Register</span>
-          </Link>
+          <Button className="mt-4" type="primary">Login</Button>
         </form>
       </div>
     </div>
