@@ -11,6 +11,8 @@ input, input:focus{
   border: 2px solid #cccccc;
   border-radius: 5px;
   padding: 5px;
+  color: #202529;
+  font-size: 1rem;
 }
 
 input:focus{

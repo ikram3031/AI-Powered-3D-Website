@@ -7,10 +7,10 @@ const Button = ({ children, type, onClick }) => {
 
   switch (type) {
     case 'primary':
-      buttonClass += ' bg-primary bg-green-600 hover:bg-green-500 ';
+      buttonClass += ' bg-green-600 hover:bg-green-500 ';
       break;
     case 'secondary':
-      buttonClass += ' bg-secondary hover:bg-orange-600';
+      buttonClass += ' bg-secondary hover:bg-secondary-hover ';
       break;
     case 'success':
       buttonClass += ' bg-success hover:bg-green-700';

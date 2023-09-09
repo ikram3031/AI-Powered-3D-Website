@@ -1,9 +1,9 @@
-import NavBar from "@/components/navBar";
+import NavBar from "@/components/Sections/NavBar";
 import SideBar from "@/components/SideBar/SideBar";
 
 export default function DashboardLayout({ children }) {
     return (
-        <section className="flex flex-row">
+        <section className="flex flex-col">
             <NavBar/>
             <section>
                 <SideBar />
