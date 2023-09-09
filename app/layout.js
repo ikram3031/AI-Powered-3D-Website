@@ -1,5 +1,5 @@
 import { AuthProvider, ReduxProvider } from "./Providers";
-import './globals.scss'
+import './globals.css'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
         <ReduxProvider>
           <AuthProvider>{children}</AuthProvider>
         </ReduxProvider>
-        <ToastContainer/>
+        <ToastContainer />
       </body>
     </html>
   )

@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background-color: #E7E7E7;
+  color: #202529;
+  max-height: 100vh;
+  height: 100vh;
+}
+
+input, input:focus{
+  border: 2px solid #cccccc;
+  border-radius: 5px;
+  padding: 5px;
+  color: #202529;
+  font-size: 1rem;
+}
+
+input:focus{
+  outline: none;
+}
+
+h1{
+  font-size: 2rem;
+}
+
+h3{
+  font-size: 1.25rem;
+}
+
+.sideBar{
+  background-color: #24282c;
+  width: 60px;
+  height: calc(100vh -60px);
+}
+
+.sideBarOpen{
+  width: 200px;
+}
