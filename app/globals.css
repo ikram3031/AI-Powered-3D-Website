@@ -22,3 +22,13 @@ input:focus{
 h1{
   font-size: 2rem;
 }
+
+.sideBar{
+  background-color: #e7e7e7;
+  width: 60px;
+  height: calc(100vh -60px);
+}
+
+.sideBarOpen{
+  width: 200px;
+}

@@ -5,7 +5,7 @@ export default function DashboardLayout({ children }) {
     return (
         <section className="flex flex-col">
             <NavBar/>
-            <section>
+            <section className="flex flex-row">
                 <SideBar />
                 {children}
             </section>
