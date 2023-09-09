@@ -3,11 +3,11 @@
 import React from 'react';
 
 const Button = ({ children, type, onClick , styles}) => {
-  let buttonClass = ' font-semibold cursor-pointer border-2 transition ease-in-out duration-500 flex gap-2 items-center rounded-md px-4 py-1';
+  let buttonClass = 'text-white font-semibold cursor-pointer border-2 transition ease-in-out duration-500 flex gap-2 items-center rounded-md px-4 py-1';
 
   switch (type) {
     case 'primary':
-      buttonClass += 'text-white bg-green-600 hover:bg-green-500 ';
+      buttonClass += ' justify-center bg-textColor hover:bg-dark';
       break;
     case 'secondary':
       buttonClass += ' text-white bg-secondary border-secondary hover:bg-white hover:text-dark min-w-fit';

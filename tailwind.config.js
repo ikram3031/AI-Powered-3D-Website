@@ -8,7 +8,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'dark': '#202529',
+        'dark': '#000b18',
+        'sidebar': '#24282c',
+        'textColor': '#242526',
         'secondary': '#faba39',
         'secondary-hover': '#fcd077',
       },
@@ -21,3 +23,4 @@ module.exports = {
   },
   plugins: [],
 }
+
