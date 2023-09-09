@@ -2,15 +2,15 @@
 
 import React from 'react';
 
-const Button = ({ children, type, onClick }) => {
-  let buttonClass = 'text-white font-bold cursor-pointer px-6 py-2 transition ease-in-out delay-50';
+const Button = ({ children, type, onClick , styles}) => {
+  let buttonClass = 'text-white font-semibold cursor-pointer border-2 transition ease-in-out duration-500 flex gap-2 items-center rounded-md px-4 py-1';
 
   switch (type) {
     case 'primary':
       buttonClass += ' bg-green-600 hover:bg-green-500 ';
       break;
     case 'secondary':
-      buttonClass += ' bg-secondary hover:bg-secondary-hover ';
+      buttonClass += ' bg-secondary border-secondary hover:bg-white hover:text-dark min-w-fit';
       break;
     case 'success':
       buttonClass += ' bg-success hover:bg-green-700';
@@ -20,7 +20,11 @@ const Button = ({ children, type, onClick }) => {
   }
 
   return (
-    <button className={buttonClass} onClick={onClick}>
+    <button 
+      className={buttonClass} 
+      onClick={onClick}
+      style={styles}
+    >
       {children}
     </button>
   );

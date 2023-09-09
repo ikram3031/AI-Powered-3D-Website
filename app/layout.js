@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
         <ReduxProvider>
           <AuthProvider>{children}</AuthProvider>
         </ReduxProvider>
-        <ToastContainer/>
+        <ToastContainer />
       </body>
     </html>
   )
